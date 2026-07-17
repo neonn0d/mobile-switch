@@ -1,0 +1,174 @@
+:root {
+  --bg: #0b0c0e;
+  --fg: #eceef2;
+  --name: #d3d7de;
+  --muted: #767c8a;
+  --faint: #565b68;
+  --hover: rgba(255, 255, 255, 0.045);
+  --sel: rgba(96, 130, 255, 0.12);
+  --accent: #6b8dff;
+  --hair: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 272px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- header ---- */
+
+.hdr {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 13px 14px 11px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.hdr-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--faint);
+  transition: background 0.2s;
+}
+
+.dot.active {
+  background: #35d07f;
+}
+
+.hdr-sub {
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- list ---- */
+
+main {
+  padding: 5px;
+}
+
+.devices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.device {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.device:hover {
+  background: var(--hover);
+}
+
+.device.selected {
+  background: var(--sel);
+}
+
+.device.selected::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 9px;
+  bottom: 9px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
+.glyph {
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--faint);
+  flex-shrink: 0;
+  transition: color 0.12s ease;
+}
+
+.device:hover .glyph {
+  color: var(--muted);
+}
+
+.device.selected .glyph {
+  color: var(--accent);
+}
+
+.device-name {
+  color: var(--name);
+  font-weight: 450;
+  letter-spacing: -0.005em;
+}
+
+.device.selected .device-name {
+  color: var(--fg);
+}
+
+.device-spec {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.device:hover .device-spec {
+  color: var(--muted);
+}
+
+.check {
+  width: 13px;
+  margin-left: 2px;
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.device.selected .check {
+  opacity: 1;
+}
+
+/* ---- footer ---- */
+
+.hint {
+  margin: 2px 12px 8px;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--faint);
+  min-height: 13px;
+}
+
+.hint.error {
+  color: #f2879a;
+}
